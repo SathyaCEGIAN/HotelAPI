@@ -1,6 +1,7 @@
+using HotelAPI;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HotelAPI.Controllers
+namespace EmployeeApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -28,20 +29,6 @@ namespace HotelAPI.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
-        }
-
-        [HttpGet]
-        public ActionResult<WeatherForecast> Getbydate(DateTime dt)
-        {
-            var weather = Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
-
-            return weather.FirstOrDefault(e => e.Date == dt);
         }
     }
 }
